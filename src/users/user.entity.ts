@@ -4,9 +4,11 @@ import {
   Column,
   CreateDateColumn,
   ManyToMany,
-  JoinTable
+  JoinTable,
+  OneToMany,
 } from 'typeorm';
 import { Role } from '../roles/role.entity';
+import { MembershipFee } from '../membership-fees/membership-fee.entity';
 
 @Entity()
 export class User {
@@ -34,4 +36,7 @@ export class User {
   @ManyToMany(() => Role, (role) => role.users, { eager: true })
   @JoinTable()
   roles: Role[];
+
+  @OneToMany(() => MembershipFee, (membershipFee) => membershipFee.user)
+  membershipFees: MembershipFee[];
 }
