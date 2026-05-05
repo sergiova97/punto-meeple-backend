@@ -10,6 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserInputDto } from './dto/create-user.input.dto';
 import { UpdateUserInputDto } from './dto/update-user.input.dto';
+import { AssignRolesInputDto } from './dto/assig-roles.input.dto';
 
 @Controller('users')
 export class UsersController {
@@ -38,5 +39,10 @@ export class UsersController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.service.delete({ id: +id });
+  }
+
+  @Post('assign-roles')
+  assignRoles(@Body() dto: AssignRolesInputDto) {
+    return this.service.assignRoles(dto);
   }
 }

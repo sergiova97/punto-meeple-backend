@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GetUserOutputDto } from '../dto/get-user.output.dto';
-import { User } from '../users.entity';
+import { User } from '../user.entity';
 
 @Injectable()
 export class GetUserAssembler {

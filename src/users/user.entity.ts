@@ -3,7 +3,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToMany,
+  JoinTable
 } from 'typeorm';
+import { Role } from '../roles/role.entity';
 
 @Entity()
 export class User {
@@ -27,4 +30,8 @@ export class User {
 
   @CreateDateColumn({ type: 'timestamp' })
   registerDate: Date;
+
+  @ManyToMany(() => Role, (role) => role.users, { eager: true })
+  @JoinTable()
+  roles: Role[];
 }
