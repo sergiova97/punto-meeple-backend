@@ -1,0 +1,4 @@
+export enum GameType {
+  BOARD_GAME = 'BOARD_GAME',
+  ROLE_PLAYING_GAME = 'ROLE_PLAYING_GAME',
+}
