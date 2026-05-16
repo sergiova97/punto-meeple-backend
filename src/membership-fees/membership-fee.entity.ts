@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -9,6 +10,7 @@ import { User } from '../users/user.entity';
 import { MembershipFeeStatus } from './membership-fee-status.enum';
 import { Payment } from '../payments/payment.entity';
 
+@Index(['user', 'period'], { unique: true })
 @Entity()
 export class MembershipFee {
   @PrimaryGeneratedColumn()
@@ -35,5 +37,4 @@ export class MembershipFee {
   })
   @JoinColumn()
   payment: Payment | null;
-
 }
