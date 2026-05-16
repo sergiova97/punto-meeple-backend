@@ -10,5 +10,5 @@ export class GenerateMembershipFeesInputDto {
   periods: string[];
 
   @IsNumber()
-  amount: number;
+  price: number;
 }

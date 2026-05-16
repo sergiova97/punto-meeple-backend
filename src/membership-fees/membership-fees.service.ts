@@ -33,7 +33,6 @@ export class MembershipFeesService {
     return this.assembler.toOutputDto(saved);
   }
 
-  /*//TODO revisar
   async generateFees(dto: GenerateMembershipFeesInputDto) {
     const users = await this.userRepo.findByIds(dto.userIds);
 
@@ -45,19 +44,23 @@ export class MembershipFeesService {
 
     for (const user of users) {
       for (const period of dto.periods) {
-        const exists = await this.feeRepo.findOne({
+        const existingFee = await this.feeRepo.findOne({
           where: {
             user: { id: user.id },
             period,
           },
         });
 
-        if (exists) continue;
+        if (existingFee) {
+          existingFee.price = dto.price;
+          fees.push(existingFee);
+          continue;
+        }
 
         const fee = this.feeRepo.create({
-          user: { id: user.id },
+          user: user,
           period,
-          amount: dto.amount,
+          price: dto.price,
         });
 
         fees.push(fee);
@@ -69,5 +72,5 @@ export class MembershipFeesService {
     return {
       created: saved.length,
     };
-  } */
+  }
 }
