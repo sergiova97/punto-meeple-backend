@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
 import { MembershipFeesModule } from './membership-fees/membership-fees.module';
 import { PaymentsModule } from './payments/payments.module';
+import { GameMechanicsModule } from './game-mechanics/game-mechanics.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { PaymentsModule } from './payments/payments.module';
     RolesModule,
     MembershipFeesModule,
     PaymentsModule,
+    GameMechanicsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
