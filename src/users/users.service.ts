@@ -34,10 +34,18 @@ export class UsersService {
     private assignRolesAssembler: AssignRolesAssembler,
   ) {}
 
-  async findAll() {
-    const users = await this.userRepo.find();
+  async findAll({ page, limit }: { page: number; limit: number }) {
+    const [users, total] = await this.userRepo.findAndCount({
+      skip: (page - 1) * limit,
+      take: limit,
+    });
 
-    return this.getAssembler.toOutputDtoList(users);
+    return {
+      data: this.getAssembler.toOutputDtoList(users),
+      total,
+      page,
+      limit,
+    };
   }
 
   async findOne(id: number) {

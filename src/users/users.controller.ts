@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserInputDto } from './dto/create-user.input.dto';
@@ -17,8 +18,11 @@ export class UsersController {
   constructor(private readonly service: UsersService) {}
 
   @Get()
-  findAll() {
-    return this.service.findAll();
+  findAll(
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
+  ) {
+    return this.service.findAll({ page: +page, limit: +limit });
   }
 
   @Get(':id')
