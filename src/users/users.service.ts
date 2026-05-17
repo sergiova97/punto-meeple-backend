@@ -85,9 +85,7 @@ export class UsersService {
   }
 
   async assignRoles(dto: AssignRolesInputDto) {
-    const user = await this.userRepo.findOneBy(
-      { id: dto.userId }
-    );
+    const user = await this.userRepo.findOneBy({ id: dto.userId });
 
     if (!user) {
       throw new NotFoundException('User not found');

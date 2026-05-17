@@ -9,6 +9,7 @@ import { MembershipFeesModule } from './membership-fees/membership-fees.module';
 import { PaymentsModule } from './payments/payments.module';
 import { GameMechanicsModule } from './game-mechanics/game-mechanics.module';
 import { GameCategoriesModule } from './game-categories/game-categories.module';
+import { GamesModule } from './games/games.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { GameCategoriesModule } from './game-categories/game-categories.module';
     PaymentsModule,
     GameMechanicsModule,
     GameCategoriesModule,
+    GamesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
